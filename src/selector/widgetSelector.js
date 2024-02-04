@@ -1,0 +1,1 @@
+export const widgetData = (state) => state.widget.widgetData;
