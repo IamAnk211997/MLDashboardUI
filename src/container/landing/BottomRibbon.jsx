@@ -8,7 +8,7 @@ const BottomRibbon = () => {
             <Card className="h-full w-4/6 p-4 self-center">
                 <PlotMain />
             </Card>
-            <div className="h-full w-full p-4 self-center">
+            <div className="h-full w-full flex flex-row">
                 <Card className="h-1/5 w-full p-4 self-center">
                     Table
                 </Card>

@@ -31,7 +31,7 @@ const Ticker = ({ data }) => {
     
 
     return (
-        <div>
+        <div className=' scale-125 px-10'>
             <div className="text-2xl font-bold">{data.stock_name}</div>
             <div className="text-3xl font-bold">{data.price.toFixed(2).toLocaleString()}</div>
             <div className="flex flex-row items-center text-1xl font-bold">

@@ -8,10 +8,10 @@ const TopRibbon = ({data}) => {
     return (
         <div className="flex flex-1 flex-row justify-evenly gap-4">
             {/* <Ticker data={data.tickerData}/> */}
-            <Card className="h-full w-1/4 p-4 self-center">
+            <Card className=" w-1/4 p-4">
                 <Ticker data={data.tickerData}/>
             </Card>
-            <Card className="h-full w-3/4 p-1 self-center">
+            <Card className="w-3/4">
                 <DataWidget data={data.widgetData}/>
             </Card>
         </div>

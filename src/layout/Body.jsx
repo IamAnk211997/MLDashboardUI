@@ -10,7 +10,7 @@ const Body = () => {
         <div>
             {widgy.length != 0 ?
                 <Landing /> :
-                <div class="w-full h-[75vh] flex justify-center items-center">
+                <div className="w-full h-[75vh] flex justify-center items-center">
                     Please select a Value from DropDown
                 </div>
             }
