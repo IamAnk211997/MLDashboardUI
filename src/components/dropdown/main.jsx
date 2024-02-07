@@ -12,6 +12,7 @@ const Dropdown = ({ data }) => {
     console.log(selectedValue);
     setSelectedOption(selectedValue);
     dispatch({ type: Actions.WidgetData.GET_WIDGET_DATA });
+    dispatch({ type: Actions.GraphData.GET_GRAPH_DATA });
   }
 
   return (

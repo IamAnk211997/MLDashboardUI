@@ -1,13 +1,14 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 
-const PlotMain = () => {
+const PlotMain = ({data}) => {
+  console.log(data);
   return (
     <Plot
     data={[
       {
-        x: [1, 2, 3, 4],
-        y: [10, 11, 12, 13],
+        x: data.dates,
+        y: data.closing_prices,
         type: 'scatter',
         mode: 'lines+markers',
         marker: { color: 'red' },

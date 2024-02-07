@@ -6,11 +6,13 @@ import BottomRibbon from './BottomRibbon';
 
 const Landing = () => {
     const widgy = useSelector(Selector.widgetSelect.widgetData);
+    const charty = useSelector(Selector.graphSelect.graphData);
     console.log(widgy);
+    console.log(charty);
     return (
         <div>
             <TopRibbon data={widgy}/>
-            <BottomRibbon/>
+            <BottomRibbon data={charty}/>
         </div>
     )
 }
