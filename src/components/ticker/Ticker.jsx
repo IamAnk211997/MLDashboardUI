@@ -1,17 +1,17 @@
 import React from 'react';
-import UpArrow from '@assets/up.svg';
-import DownArrow from '@assets/down.svg';
+import UpArrow from '@assets/triangle-up.svg';
+import DownArrow from '@assets/triangle-down.svg';
 
 const Ticker = ({ data }) => {
     const isPositiveDifference = data.difference_from_yesterday > 0;
-
+console.log(data.difference_from_yesterday,isPositiveDifference);
     const arrowStyle = {
         height: '20px', // Adjust the height of the arrow image
         marginRight: '5px' // Add margin to the right of the arrow
     };
 
     const textStyle = {
-        color: isPositiveDifference ? '#d12345' : 'red',
+        color: isPositiveDifference ? '#228B22':'#d12345' ,
         fontSize: '16px', // Adjust the font size of the text
         marginLeft: '5px' // Add margin to the left of the text
     };
