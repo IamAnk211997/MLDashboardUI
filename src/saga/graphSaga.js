@@ -4,7 +4,9 @@ import axios from 'axios';
 
 function* fetchData(action) {
   try {
-    const data = yield call(axios.get, 'http://127.0.0.1:8000/api/getPlotData/?stockname=AAPL&start_date=2020-01-01&end_date=2024-02-01');
+    const data = yield call(axios.get, 'https://ankit1997.pythonanywhere.com/api/getPlotData?stockname=AAPL&start_date=2020-01-01&end_date=2024-02-01');
+    // https://ankit1997.pythonanywhere.com/api/getData?stockname=AAPL
+    // http://127.0.0.1:5000/api/getPlotData?stockname=AAPL&start_date=2020-01-01&end_date=2024-02-01
     console.log(data);
     yield put(Actions.GraphData.setGraph(data.data));
     console.log("Success");

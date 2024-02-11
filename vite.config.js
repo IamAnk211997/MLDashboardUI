@@ -14,7 +14,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:8000', // Your backend server address
+        target: 'https://ankit1997.pythonanywhere.com', // Your backend server address prod https://ankit1997.pythonanywhere.com/ dev http://127.0.0.1:5000
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
