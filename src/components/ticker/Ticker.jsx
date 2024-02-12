@@ -41,7 +41,7 @@ console.log(data.difference_from_yesterday,isPositiveDifference);
                     <img src={DownArrow} alt="Down Arrow" style={arrowStyle} />
                 )}
                 <span style={textStyle}>
-                    {data.difference_from_yesterday.toFixed(4).toLocaleString()} ({data.percentage_difference.toFixed(2)})
+                    {data.difference_from_yesterday.toFixed(4).toLocaleString()} ({data.percentage_difference.toFixed(2)+ ' %'})
                 </span>
             </div>
             <div className="text-xs font-bold text-gray-500">

@@ -14,6 +14,7 @@ const Dropdown = ({ data }) => {
     setSelectedOption(selectedValue);
     dispatch({ type: Actions.WidgetData.GET_WIDGET_DATA, data:selectedValue });
     dispatch({ type: Actions.GraphData.GET_GRAPH_DATA, data:selectedValue  });
+    dispatch({ type: Actions.TableData.GET_TABLE_WIDGET_DATA, data:selectedValue  });
   }
 
   return (

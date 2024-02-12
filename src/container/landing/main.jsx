@@ -9,7 +9,8 @@ const Landing = () => {
     const widgy = useSelector(Selector.widgetSelect.widgetData);
     const charty = useSelector(Selector.graphSelect.graphData);
     const spinny = useSelector(Selector.commonSelect.spinnerSelect);
-    console.log('spinner state',spinny);
+    const tableData = useSelector(Selector.dataSelect.dataSelect);
+    console.log('spinner state',tableData);
     return (
         <div>
             {spinny?
@@ -18,7 +19,7 @@ const Landing = () => {
             </div>:
             <>
                 <TopRibbon data={widgy}/>
-                <BottomRibbon data={charty}/>
+                <BottomRibbon data={charty} tableData={tableData}/>
             </>           
         }
         </div>
