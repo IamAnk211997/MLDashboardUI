@@ -1,0 +1,1 @@
+export const spinnerSelect = (state) => state.spinner.spinnerState;

@@ -5,13 +5,14 @@ import * as Selector from '@selector';
 
 const Body = () => {
     const widgy = useSelector(Selector.widgetSelect.widgetData);
+
     console.log(widgy);
     return (
         <div>
             {widgy.length != 0 ?
                 <Landing /> :
                 <div className="w-full h-[75vh] flex justify-center items-center">
-                    Please select a Value from DropDown
+                    <div className="flex items-center relative text-3xl font-bold">Please select a Value from DropDown</div>
                 </div>
             }
         </div>

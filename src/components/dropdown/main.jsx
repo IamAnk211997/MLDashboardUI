@@ -9,10 +9,11 @@ const Dropdown = ({ data }) => {
 
   const dropChange = (evt) => {
     const selectedValue = evt.target.value;
-    console.log(selectedValue);
+    const selectedKey = evt.target.value;
+    console.log(selectedValue,selectedKey,data);
     setSelectedOption(selectedValue);
-    dispatch({ type: Actions.WidgetData.GET_WIDGET_DATA });
-    dispatch({ type: Actions.GraphData.GET_GRAPH_DATA });
+    dispatch({ type: Actions.WidgetData.GET_WIDGET_DATA, data:selectedValue });
+    dispatch({ type: Actions.GraphData.GET_GRAPH_DATA, data:selectedValue  });
   }
 
   return (
@@ -25,7 +26,7 @@ const Dropdown = ({ data }) => {
       >
         {selectedOption ? null : <option value="">Select</option>}
         {stockData.map((stock, index) => (
-          <option key={index} value={stock.name}>
+          <option key={index} value={stock.key}>
             {stock.name}
           </option>
         ))}
