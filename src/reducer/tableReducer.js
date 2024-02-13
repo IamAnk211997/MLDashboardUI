@@ -12,6 +12,8 @@ export const tableReducer = (state = initState, action) => {
             return {...state, widgetData: action.payload};
         case Actions.TableData.SET_MODAL_WIDGET_DATA:
             return {...state, modalData: action.payload};
+        case Actions.TableData.CLEAR_MODAL_WIDGET_DATA:
+            return {...state, modalData: []};
         default:
             return state;
     }

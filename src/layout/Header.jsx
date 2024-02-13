@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Dropdown from '../components/dropdown/main';
 import { stockData } from '../data';
 
-const Header = () => {
+const Header = ({stateData}) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -14,7 +14,7 @@ const Header = () => {
         <div className="container mx-auto px-4 py-6 flex justify-between items-center">
             <div className="flex items-center relative text-3xl font-bold">My Dashboard</div>
             <div className="relative">
-                <Dropdown data={stockData}/>
+                <Dropdown data={stockData} stateData={stateData}/>
             </div>
         </div>
     </div>

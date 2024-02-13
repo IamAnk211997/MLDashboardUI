@@ -3,7 +3,7 @@ import Landing from '../container/landing/main'
 import { useSelector } from 'react-redux';
 import * as Selector from '@selector';
 
-const Body = () => {
+const Body = ({stateData}) => {
     const widgy = useSelector(Selector.widgetSelect.widgetData);
     const charty = useSelector(Selector.graphSelect.graphData);
     const tableData = useSelector(Selector.dataSelect.dataSelect);
@@ -11,7 +11,7 @@ const Body = () => {
     return (
         <div>
             {widgy.length != 0 && charty.length != 0 && tableData.length!=0?
-                <Landing /> :
+                <Landing stateData={stateData}/> :
                 <div className="w-full h-[75vh] flex justify-center items-center">
                     <div className="flex items-center relative text-3xl font-bold">Please select a Value from DropDown</div>
                 </div>

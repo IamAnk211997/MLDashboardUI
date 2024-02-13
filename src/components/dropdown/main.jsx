@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Actions from "../../action";
 
-const Dropdown = ({ data }) => {
+const Dropdown = ({ data,stateData }) => {
   const stockData = data;
   const dispatch = useDispatch();
-  const [selectedOption, setSelectedOption] = useState('');
-
+  // const [selectedOption, setSelectedOption] = useState('');
+console.log(stateData)
   const dropChange = (evt) => {
     const selectedValue = evt.target.value;
     const selectedKey = evt.target.value;
     console.log(selectedValue,selectedKey,data);
-    setSelectedOption(selectedValue);
+    stateData.setSelectedItem(selectedValue)
+    // setSelectedOption(selectedValue);
     dispatch({ type: Actions.WidgetData.GET_WIDGET_DATA, data:selectedValue });
     dispatch({ type: Actions.GraphData.GET_GRAPH_DATA, data:selectedValue  });
     dispatch({ type: Actions.TableData.GET_TABLE_WIDGET_DATA, data:selectedValue  });
@@ -23,9 +24,9 @@ const Dropdown = ({ data }) => {
         className="block appearance-none w-full bg-white-100 border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
         id="grid-state"
         onChange={(e) => dropChange(e)}
-        value={selectedOption}
+        value={stateData.selectedItem}
       >
-        {selectedOption ? null : <option value="">Select</option>}
+        {stateData.selectedItem ? null : <option value="">Select</option>}
         {stockData.map((stock, index) => (
           <option key={index} value={stock.key}>
             {stock.name}

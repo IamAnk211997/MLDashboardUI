@@ -5,7 +5,7 @@ import TopRibbon from './TopRibbon';
 import BottomRibbon from './BottomRibbon';
 import { Spinner } from 'flowbite-react';
 
-const Landing = () => {
+const Landing = ({stateData}) => {
     const widgy = useSelector(Selector.widgetSelect.widgetData);
     const charty = useSelector(Selector.graphSelect.graphData);
     const spinny = useSelector(Selector.commonSelect.spinnerSelect);
@@ -19,7 +19,7 @@ const Landing = () => {
             </div>:
             <>
                 <TopRibbon data={widgy}/>
-                <BottomRibbon data={charty} tableData={tableData}/>
+                <BottomRibbon data={charty} tableData={tableData} stateData={stateData}/>
             </>           
         }
         </div>
