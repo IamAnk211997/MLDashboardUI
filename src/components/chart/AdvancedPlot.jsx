@@ -1,7 +1,7 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 
-const AdvancedPlot = ({ data }) => {
+const AdvancedPlot = ({ data , width, height }) => {
   return (
     data && (
       <Plot
@@ -16,8 +16,8 @@ const AdvancedPlot = ({ data }) => {
           }
         ]}
         layout={{
-          width: 800,
-          height: 400,
+          width: width,
+          height: height,
           title: {
             text: 'Stock Price',
             x: 0.05, // Adjust the x position to move the title to the left
