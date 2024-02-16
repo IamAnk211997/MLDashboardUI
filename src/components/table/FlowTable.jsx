@@ -27,7 +27,7 @@ const FlowTable = ({ columns, data, format }) => {
 
   return (
     <>
-      <Table>
+      <Table striped>
         <Table.Head>
           {columns.map((column, index) => (
             <Table.HeadCell key={index}>{column.label}</Table.HeadCell>
