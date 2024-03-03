@@ -7,7 +7,7 @@ function App() {
   const stateData = {selectedItem,setSelectedItem};
 
   return (
-    <div className="bg-gray-100 w-full h-[100vh]">
+    <div>
       <Header stateData={stateData}/>
       <div className="bg-gray-200 rounded-xl m-8 p-4">
         <Body stateData={stateData}/>

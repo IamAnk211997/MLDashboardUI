@@ -1,11 +1,12 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 
-const AdvancedPlot = ({ data }) => {
+const AdvancedCandlePlot = ({ data }) => {
+    console.log(data)
   const range = data.dates;
   const startDate = new Date('2020-01-01');
-  const endDate = range[range.length-1];
-  console.log(data);
+  const endDate = range[range.length - 1];
+
   return (
     data && (
       <Plot
@@ -13,31 +14,32 @@ const AdvancedPlot = ({ data }) => {
         data={[
           {
             x: data.dates,
-            y: data.closing_prices,
-            type: 'scatter',
-            mode: 'lines',
-            marker: { color: '#7F7F7F' },
-            fill: 'tozeroy',
-            fillcolor: `rgba(127, 127, 127, 0.1)`,
-            name: 'Closing Prices',
-          }
+            close: data.closing_prices,
+            decreasing: { line: { color: 'green' } },
+            high: data.high_prices,
+            increasing: { line: { color: 'red' } },
+            line: { color: 'rgba(31,119,180,1)' },
+            low: data.low_prices,
+            open: data.opening_prices,
+            type: 'candlestick',
+          },
         ]}
         layout={{
           title: {
             text: '<b>Stock Price</b>',
-            x: 0.05, // Adjust the x position to move the title to the left
-            xanchor: 'left', // Anchor the title to the left
-            y: 0.95, // Adjust the y position if needed
-            yanchor: 'top', // Anchor the title to the top
+            x: 0.05,
+            xanchor: 'left',
+            y: 0.95,
+            yanchor: 'top',
             font: {
-                size: 36, // Adjust the font size as needed
-                family: 'Arial, sans-serif', // Specify font family if needed
-                color: '#000000', // Specify font color if needed
-                weight: '900', // Specify font weight if needed
-            }
+              size: 36,
+              family: 'Arial, sans-serif',
+              color: '#000000',
+              weight: '900',
+            },
           },
           xaxis: {
-            range: [startDate,endDate],
+            range: [startDate, endDate],
             rangeselector: {
               buttons: [
                 {
@@ -64,16 +66,16 @@ const AdvancedPlot = ({ data }) => {
               ],
             },
             rangeslider: {
-              visible: true,
+              visible: false,
             },
             type: 'date',
           },
         }}
-        config={{ responsive: true }} 
-        style={{ width: '100%', height: '100%' }} 
+        config={{ responsive: true }}
+        style={{ width: '100%', height: '100%' }}
       />
     )
   );
 };
 
-export default AdvancedPlot;
+export default AdvancedCandlePlot;

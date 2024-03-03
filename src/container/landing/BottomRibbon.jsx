@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
 import { Card, Spinner } from "flowbite-react"
-// import PlotMain from '../../components/chart/PlotMain';
+
 import AdvancedPlot from '../../components/chart/AdvancedPlot';
 import FlowTable from '../../components/table/FlowTable';
 import FlowModal from '../../components/modal/FlowModal';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Selector from '@selector';
 import * as Actions from '@action';
+import AdvancedCandlePlot from '../../components/chart/AdvancedCandlePlot';
 
 const BottomRibbon = ({data,tableData,stateData}) => {
+    console.log(data)
     const dispatch = useDispatch();
     const [modal, setModal] = useState(0);
     const tableDataModal = useSelector(Selector.dataSelect.dataModalSelect);
-    console.log(modal,tableDataModal);
-    
+
     const HandleModal = (state,modaltype) =>{
         console.log('Modal ',state,modaltype)
         if(state=='open')
@@ -52,10 +53,10 @@ const BottomRibbon = ({data,tableData,stateData}) => {
     }
 
     return (
-        <div className="flex flex-1 flex-row justify-evenly gap-2 mt-4">
-            <Card className="h-full w-4/6 self-center">
-                {/* <PlotMain data={data.stock_data}/> */}
-                <AdvancedPlot data={data.stock_data}/>
+        <div className="flex flex-1 flex-col justify-evenly gap-2 mt-4">
+            <Card className="h-full w-full self-center">
+                {/* <AdvancedPlot data={data.stock_data}/> */}
+                <AdvancedCandlePlot data={data}/>
             </Card>
             <div className="h-full w-full flex flex-col gap-2.5">
                 <Card className="h-1/5 w-full p-4 self-center">
