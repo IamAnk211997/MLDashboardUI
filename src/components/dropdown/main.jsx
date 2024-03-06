@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Actions from "../../action";
 
-const Dropdown = ({ data,stateData }) => {
+const Dropdown = ({ data,stateData,homeAction }) => {
   const stockData = data;
   const dispatch = useDispatch();
-  // const [selectedOption, setSelectedOption] = useState('');
-console.log(stateData)
+
   const dropChange = (evt) => {
     const selectedValue = evt.target.value;
     const selectedKey = evt.target.value;
-    console.log(selectedValue,selectedKey,data);
+
     stateData.setSelectedItem(selectedValue)
-    // setSelectedOption(selectedValue);
+
     dispatch({ type: Actions.WidgetData.GET_WIDGET_DATA, data:selectedValue });
     dispatch({ type: Actions.GraphData.GET_GRAPH_DATA, data:selectedValue  });
     dispatch({ type: Actions.TableData.GET_TABLE_WIDGET_DATA, data:selectedValue  });
+
+    homeAction && homeAction();
   }
 
   return (

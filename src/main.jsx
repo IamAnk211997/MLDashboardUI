@@ -9,6 +9,9 @@ import rootReducer from './reducer/index.js';
 
 import { Provider } from 'react-redux';
 import rootSaga from './saga/index.js';
+import { RouterProvider } from 'react-router-dom';
+import router from './routes/router.jsx';
+import { StateProvider } from './contexts/StateContext.jsx';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -21,6 +24,8 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <App />
+    <StateProvider>
+      <RouterProvider router={router}/>
+    </StateProvider>
   </Provider>,
 )

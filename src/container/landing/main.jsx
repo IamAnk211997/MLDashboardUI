@@ -8,26 +8,26 @@ import socketIOClient from 'socket.io-client';
 
 const ENDPOINT = 'http://localhost:5000'; 
 
-const Landing = ({stateData}) => {
+const Landing = () => {
 
-    // const [stockData, setStockData] = useState([]);
+    const [stockData, setStockData] = useState([]);
 
-    // useEffect(() => {
-    //     const socket = socketIOClient(ENDPOINT);
+    useEffect(() => {
+        const socket = socketIOClient(ENDPOINT);
     
-    //     socket.emit('stock_name', 'AAPL');
+        socket.emit('stock_name', 'AAPL');
         
-    //     // Listen for real-time data updates from the server
-    //     socket.on('stock_data', (data) => {
-    //       setStockData(data);
-    //     });
+        // Listen for real-time data updates from the server
+        socket.on('stock_data', (data) => {
+          setStockData(data);
+        });
     
-    //     return () => socket.disconnect();
-    //   }, []);
+        return () => socket.disconnect();
+      }, []);
 
-    //   useEffect(() => {
-    //     console.log("This: ",stockData);
-    //   }, [stockData]);
+      useEffect(() => {
+        console.log("This: ",stockData);
+      }, [stockData]);
 
 
     const widgy = useSelector(Selector.widgetSelect.widgetData);
@@ -35,7 +35,7 @@ const Landing = ({stateData}) => {
     const charty = useSelector(Selector.graphSelect.graphData);
     const spinny = useSelector(Selector.commonSelect.spinnerSelect);
     const tableData = useSelector(Selector.dataSelect.dataSelect);
-console.log(charty);
+
     return (
         <div>
             {spinny?
@@ -44,7 +44,7 @@ console.log(charty);
             </div>:
             <>
                 <TopRibbon widger={widgy} ticker={ticker}/>
-                <BottomRibbon data={charty} tableData={tableData} stateData={stateData}/>
+                <BottomRibbon data={charty} tableData={tableData}/>
             </>           
         }
         </div>
