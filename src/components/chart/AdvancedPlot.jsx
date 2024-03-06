@@ -1,78 +1,100 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Plot from 'react-plotly.js';
 
 const AdvancedPlot = ({ data }) => {
+  const [selectedOption, setSelectedOption] = useState('closing_prices');
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  if (!data) return null;
+
   const range = data.dates;
-  const startDate = new Date('2020-01-01');
+  const startDate = range[0];
   const endDate = range[range.length-1];
-  console.log(data);
+
+  let yData;
+  let graphName;
+
+  switch(selectedOption) {
+    case 'high_prices':
+      yData = data.high_prices;
+      graphName = 'High Prices';
+      break;
+    case 'low_prices':
+      yData = data.low_prices;
+      graphName = 'Low Prices';
+      break;
+    default:
+      yData = data.closing_prices;
+      graphName = 'Closing Prices';
+  }
+
   return (
-    data && (
-      <Plot
-        key={JSON.stringify(data)}
-        data={[
+    <Plot
+      key={JSON.stringify(data)}
+      data={[
+        {
+          x: data.dates,
+          y: yData,
+          type: 'scatter',
+          mode: 'lines',
+          marker: { color: '#7F7F7F' },
+          fill: 'tozeroy',
+          fillcolor: `rgba(127, 127, 127, 0.1)`,
+          name: graphName,
+        }
+      ]}
+      layout={{
+        // title: {
+        //   text: `<b>Advanced Plot</b>`,
+        //   x: 0.05,
+        //   xanchor: 'left',
+        //   y: 0.95,
+        //   yanchor: 'top',
+        //   font: {
+        //     size: 24,
+        //   }
+        // },
+        xaxis: {
+          range: [startDate, endDate],
+          type: 'date',
+          rangeslider: {
+            visible: true,
+          },
+        },
+        updatemenus: [
           {
-            x: data.dates,
-            y: data.closing_prices,
-            type: 'scatter',
-            mode: 'lines',
-            marker: { color: '#7F7F7F' },
-            fill: 'tozeroy',
-            fillcolor: `rgba(127, 127, 127, 0.1)`,
-            name: 'Closing Prices',
+            buttons: [
+              { 
+                method: 'relayout',
+                args: ['yaxis.range', [Math.min(...yData), Math.max(...yData)]],
+                label: graphName
+              },
+              { 
+                method: 'relayout',
+                args: ['yaxis.range', [Math.min(...data.high_prices), Math.max(...data.high_prices)]],
+                label: 'High Prices'
+              },
+              { 
+                method: 'relayout',
+                args: ['yaxis.range', [Math.min(...data.low_prices), Math.max(...data.low_prices)]],
+                label: 'Low Prices'
+              },
+            ],
+            direction: 'down',
+            showactive: true,
+            x: 0, // Moved to the extreme left
+            xanchor: 'left', // Anchored to the left
+            y: 1.2,
+            yanchor: 'top'
           }
-        ]}
-        layout={{
-          title: {
-            text: '<b>Stock Price</b>',
-            x: 0.05, // Adjust the x position to move the title to the left
-            xanchor: 'left', // Anchor the title to the left
-            y: 0.95, // Adjust the y position if needed
-            yanchor: 'top', // Anchor the title to the top
-            font: {
-                size: 36, // Adjust the font size as needed
-                family: 'Arial, sans-serif', // Specify font family if needed
-                color: '#000000', // Specify font color if needed
-                weight: '900', // Specify font weight if needed
-            }
-          },
-          xaxis: {
-            range: [startDate,endDate],
-            rangeselector: {
-              buttons: [
-                {
-                  count: 1,
-                  label: '1m',
-                  step: 'month',
-                  stepmode: 'backward',
-                },
-                {
-                  count: 6,
-                  label: '6m',
-                  step: 'month',
-                  stepmode: 'backward',
-                },
-                {
-                  count: 1,
-                  label: '1y',
-                  step: 'year',
-                  stepmode: 'backward',
-                },
-                {
-                  step: 'all',
-                },
-              ],
-            },
-            rangeslider: {
-              visible: true,
-            },
-            type: 'date',
-          },
-        }}
-        config={{ responsive: true }} 
-        style={{ width: '100%', height: '100%' }} 
-      />
-    )
+        ]
+      }}
+      config={{ responsive: true }} 
+      style={{ width: '100%', height: '100%' }} 
+    />
   );
 };
 

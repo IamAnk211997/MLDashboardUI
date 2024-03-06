@@ -21,6 +21,37 @@ function* fetchData(action) {
   }
 }
 
+function* fetchAnalysisData(action) {
+  try {
+    yield put(Actions.SpinnerState.setSpinner(true));
+    const data = yield call(axios.get, 'https://ankit1997.pythonanywhere.com/api/analysis/stockMAData?stockname='+action.data);
+    console.log(data);
+    yield put(Actions.GraphData.setMaGraph(data.data));
+    console.log("Success");
+    yield put(Actions.SpinnerState.setSpinner(false));
+  } catch (error) {
+    console.log("error");
+    yield put(Actions.SpinnerState.setSpinner(false));
+  }
+}
+
+function* fetchBarData(action) {
+  try {
+    yield put(Actions.SpinnerState.setSpinner(true));
+    const data = yield call(axios.get, 'https://ankit1997.pythonanywhere.com/api/analysis/stockAnnualMontlyData?stockname='+action.data);
+    console.log(data);
+    yield put(Actions.GraphData.setMaBar(data.data));
+    console.log("Success");
+    yield put(Actions.SpinnerState.setSpinner(false));
+  } catch (error) {
+    console.log("error");
+    yield put(Actions.SpinnerState.setSpinner(false));
+  }
+}
+
+
 export default function* graphWatcher(){
-    yield takeLatest(Actions.GraphData.GET_GRAPH_DATA,fetchData)
+    yield takeLatest(Actions.GraphData.GET_GRAPH_DATA,fetchData),
+    yield takeLatest(Actions.GraphData.GET_MA_GRAPH_DATA,fetchAnalysisData),
+    yield takeLatest(Actions.GraphData.GET_MA_BAR_DATA,fetchBarData)
 }

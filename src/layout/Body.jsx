@@ -1,5 +1,4 @@
 import React from 'react'
-import Landing from '../container/landing/main'
 import { useSelector } from 'react-redux';
 import * as Selector from '@selector';
 import { Outlet } from 'react-router-dom';

@@ -14,7 +14,8 @@ const Dropdown = ({ data,stateData,homeAction }) => {
     dispatch({ type: Actions.WidgetData.GET_WIDGET_DATA, data:selectedValue });
     dispatch({ type: Actions.GraphData.GET_GRAPH_DATA, data:selectedValue  });
     dispatch({ type: Actions.TableData.GET_TABLE_WIDGET_DATA, data:selectedValue  });
-
+    dispatch({ type: Actions.GraphData.GET_MA_GRAPH_DATA, data:selectedValue  });
+    dispatch({ type: Actions.GraphData.GET_MA_BAR_DATA, data:selectedValue  });
     homeAction && homeAction();
   }
 
