@@ -60,7 +60,7 @@ const MonthlyHighandLow = ({ data }) => {
                         title: 'Price'
                     }
                 }}
-                config={{ responsive: true }} 
+                config={{ responsive: true, staticPlot: true }} 
                 style={{ width: '100%', height: '100%' }} 
             />
         </div>

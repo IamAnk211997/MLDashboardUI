@@ -49,19 +49,19 @@ const AdvancedMAPlot = ({ data }) => {
         }
       ]}
       layout={{
-        // title: {
-        //   text: '<b>Stock Price</b>',
-        //   x: 0.05, // Adjust the x position to move the title to the left
-        //   xanchor: 'left', // Anchor the title to the left
-        //   y: 0.95, // Adjust the y position if needed
-        //   yanchor: 'top', // Anchor the title to the top
-        //   font: {
-        //       size: 36, // Adjust the font size as needed
-        //       family: 'Arial, sans-serif', // Specify font family if needed
-        //       color: '#000000', // Specify font color if needed
-        //       weight: '900', // Specify font weight if needed
-        //   }
-        // },
+        title: {
+          text: '<b>Support and Resistance Analysis</b>',
+          x: 0.05,
+          xanchor: 'left',
+          y: 0.95,
+          yanchor: 'top',
+          font: {
+            size: 36,
+            family: 'Arial, sans-serif',
+            color: '#000000',
+            weight: '900',
+          },
+        },
         xaxis: {
           range: [startDate, endDate],
           rangeselector: {

@@ -47,16 +47,19 @@ const AdvancedPlot = ({ data }) => {
         }
       ]}
       layout={{
-        // title: {
-        //   text: `<b>Advanced Plot</b>`,
-        //   x: 0.05,
-        //   xanchor: 'left',
-        //   y: 0.95,
-        //   yanchor: 'top',
-        //   font: {
-        //     size: 24,
-        //   }
-        // },
+        title: {
+          text: '<b>Stock Price</b>',
+          x: 0.05,
+          xanchor: 'left',
+          y: 0.95,
+          yanchor: 'top',
+          font: {
+            size: 36,
+            family: 'Arial, sans-serif',
+            color: '#000000',
+            weight: '900',
+          },
+        },
         xaxis: {
           range: [startDate, endDate],
           type: 'date',
@@ -99,3 +102,6 @@ const AdvancedPlot = ({ data }) => {
 };
 
 export default AdvancedPlot;
+
+
+

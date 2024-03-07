@@ -10,7 +10,9 @@ const Analysis = () => {
     const charty = useSelector(Selector.graphSelect.graphData);
     const macharty = useSelector(Selector.graphSelect.graphMaData);
     const maBar = useSelector(Selector.graphSelect.barData);
-
+    const performanceData = useSelector(Selector.dataSelect.perfSelect);
+//Use in Bottom Ribbon
+console.log(performanceData);
     return (
         <>
         {selectedItem!=''?

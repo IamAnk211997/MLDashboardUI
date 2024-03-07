@@ -31,9 +31,10 @@ const MonthlyBarVolume = ({ data }) => {
                     },
                     yaxis: {
                         title: 'Volume'
-                    }
+                    },
+                    uirevision: false
                 }}
-                config={{ responsive: true }} 
+                config={{ responsive: true, staticPlot: true }} 
                 style={{ width: '100%', height: '100%' }} 
             />
 

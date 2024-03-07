@@ -1,21 +1,16 @@
 import React from 'react'
 import { Card } from "flowbite-react"
 import AdvancedMAPlot from '../../components/chart/AdvancedMAPlot'
-import AdvancedPlot from '../../components/chart/AdvancedPlot'
 
 
-const BottomRibbon = ({data,charty}) => {
+const BottomRibbon = ({data}) => {
 
     return (
-        <div className="flex flex-row justify-evenly gap-2 ">
-
-            <Card className=" w-2/4">
-                <AdvancedPlot data={charty}/>
-            </Card>
-            <Card className=" w-2/4">
+        <div className="flex flex-col justify-center">
+            <Card>
                 <AdvancedMAPlot data={data}/>
             </Card>
-
+            
         </div>
     )
 }

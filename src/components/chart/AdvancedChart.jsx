@@ -1,0 +1,76 @@
+import Plot from 'react-plotly.js';
+
+const AdvancedChart = ({ data }) => {
+    const range = data.dates;
+    const startDate = new Date('2020-01-01');
+    const endDate = range[range.length - 1];
+
+    return (
+        data && (
+            <Plot
+                key={JSON.stringify(data)}
+                data={[
+                    {
+                        x: data.dates,
+                        y: data.closing_prices, // Use closing prices for the line chart
+                        type: 'scatter', // Use scatter type for line chart
+                        mode: 'lines', // Display lines
+                        fill: 'tozeroy',
+                        line: { color: 'rgba(172,225,175, 1)' }, // Line color
+                    },
+                ]}
+                layout={{
+                    title: {
+                        text: '<b>Stock Price</b>',
+                        x: 0.05,
+                        xanchor: 'left',
+                        y: 0.95,
+                        yanchor: 'top',
+                        font: {
+                            size: 36,
+                            family: 'Arial, sans-serif',
+                            color: '#000000',
+                            weight: '900',
+                        },
+                    },
+                    xaxis: {
+                        range: [startDate, endDate],
+                        rangeselector: {
+                            buttons: [
+                                {
+                                    count: 1,
+                                    label: '1m',
+                                    step: 'month',
+                                    stepmode: 'backward',
+                                },
+                                {
+                                    count: 6,
+                                    label: '6m',
+                                    step: 'month',
+                                    stepmode: 'backward',
+                                },
+                                {
+                                    count: 1,
+                                    label: '1y',
+                                    step: 'year',
+                                    stepmode: 'backward',
+                                },
+                                {
+                                    step: 'all',
+                                },
+                            ],
+                        },
+                        rangeslider: {
+                            visible: false,
+                        },
+                        type: 'date',
+                    },
+                }}
+                config={{ responsive: true }}
+                style={{ width: '100%', height: '100%' }}
+            />
+        )
+    );
+};
+
+export default AdvancedChart;
