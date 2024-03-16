@@ -1,16 +1,17 @@
 import React from 'react'
 import { Card } from "flowbite-react"
-import AdvancedMAPlot from '../../components/chart/AdvancedMAPlot'
-
+import SimpleLineChart from '../../components/chart/SimpleLineChart'
+import DoughnutChart from '../../components/chart/DoughnutChart'
 
 const TopRibbon = ({data}) => {
     return (
-        <div className="flex flex-1 flex-row justify-evenly gap-4">
-
-            <Card className="p-4">
-                <AdvancedMAPlot data={data}/>
+        <div className="flex flex-row justify-evenly gap-2 ">
+            <Card className="p-4 w-2/6">
+                <DoughnutChart data={data}/>
             </Card>
-
+            <Card className="p-4 w-4/6">
+                <SimpleLineChart data={data}/>
+            </Card>
         </div>
     )
 }
