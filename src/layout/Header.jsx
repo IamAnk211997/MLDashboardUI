@@ -13,6 +13,7 @@ const Header = () => {
 
   const macharty = useSelector(Selector.graphSelect.graphMaData);
   const maBar = useSelector(Selector.graphSelect.barData);
+  const spinny = useSelector(Selector.commonSelect.spinnerSelect);
 
   let navigateTo = useNavigate()
 
@@ -28,8 +29,8 @@ const Header = () => {
               {
                 selectedItem!='' && macharty.length!=0 && maBar.length!=0?
                 <>
-                  <div className="flex items-center relative text-2xl font-bold" style ={{cursor: "pointer"}}  onClick={() => navigateTo('/Analysis')}>Analysis</div>
-                  <div className="flex items-center relative text-2xl font-bold" style ={{cursor: "pointer"}}  onClick={() => navigateTo('/Forecast')}>Forecast</div>
+                  <div className="flex items-center relative text-2xl font-bold" style ={{cursor: "pointer"}}  onClick={() => !spinny && navigateTo('/Analysis')}>Analysis</div>
+                  <div className="flex items-center relative text-2xl font-bold" style ={{cursor: "pointer"}}  onClick={() => !spinny && navigateTo('/Forecast')}>Forecast</div>
                 </>:<></>
               }
 

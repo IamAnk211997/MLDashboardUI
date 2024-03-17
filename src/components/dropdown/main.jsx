@@ -9,6 +9,8 @@ const Dropdown = ({ data,stateData,homeAction }) => {
     const selectedValue = evt.target.value;
     const selectedKey = evt.target.value;
 
+    dispatch({ type: Actions.WidgetData.CLEAR_FORECAST_DATA });
+
     stateData.setSelectedItem(selectedValue)
 
     dispatch({ type: Actions.WidgetData.GET_WIDGET_DATA, data:selectedValue });

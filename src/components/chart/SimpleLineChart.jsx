@@ -1,35 +1,14 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 
-const SimpleLineChart = () => {
-    // Generate random data for the next days
-    const generateRandomData = () => {
-        const numDays = 30; // Number of days to display
-        const startDate = new Date();
-        const dates = [];
-        const closingPrices = [];
-
-        for (let i = 0; i < numDays; i++) {
-            const currentDate = new Date(startDate);
-            currentDate.setDate(startDate.getDate() + i);
-            dates.push(currentDate.toISOString().slice(0, 10)); // Format date as YYYY-MM-DD
-
-            // Generate random closing price between 4500 and 4900
-            const closingPrice = Math.floor(Math.random() * (4900 - 4500 + 1)) + 4500;
-            closingPrices.push(closingPrice);
-        }
-
-        return { dates, closingPrices };
-    };
-
-    const { dates, closingPrices } = generateRandomData();
+const SimpleLineChart = ({data}) => {
 
     return (
         <Plot
             data={[
                 {
-                    x: dates,
-                    y: closingPrices,
+                    x: data.days,
+                    y: data.predictedValue,
                     type: 'scatter',
                     mode: 'lines',
                     line: { color: 'rgba(172,225,175, 1)' },
@@ -50,12 +29,11 @@ const SimpleLineChart = () => {
                     },
                 },
                 xaxis: {
-                    title: 'Date',
+                    title: 'Days',
                     type: 'category',
                 },
                 yaxis: {
                     title: 'Closing Price',
-                    range: [4400, 5000], // Adjust range if needed
                 },
             }}
             config={{ responsive: true }}

@@ -1,23 +1,24 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
 
-const DoughnutChart = () => {
-    const errorValue = 2178;
-    const percentage = 55;
+const DoughnutChart = ({ data }) => {
+    const errPercentage = data;
+    const accPercentage = 100-data;
 
+    const colors = ['#228B22', '#FF0000'];
+    
     return (
         <Plot
             data={[
                 {
-                    values: [percentage, 100 - percentage],
-                    labels: [`Error: ${errorValue}`, ''],
+                    values: [accPercentage, errPercentage],
                     type: 'pie',
                     hole: 0.7,
                     marker: {
-                        colors: ['#228B22', 'rgba(0,0,0,0)'], // Error color and transparent color
+                        colors: colors,
                         line: {
-                            color: 'grey', // Border color
-                            width: 2, // Border width
+                            color: 'grey',
+                            width: 2,
                         },
                     },
                     hoverinfo: 'none',
@@ -25,7 +26,7 @@ const DoughnutChart = () => {
             ]}
             layout={{
                 title: {
-                    text: '<b>Error Chart</b>',
+                    text: '<b>Error Percentage</b>',
                     x: 0.5,
                     xanchor: 'center',
                     y: 0.9,
@@ -44,14 +45,14 @@ const DoughnutChart = () => {
                             color: '#000000',
                         },
                         showarrow: false,
-                        text: `${percentage}%`,
+                        text: `${errPercentage}%`,
                         x: 0.5,
                         y: 0.5,
                     },
                 ],
                 showlegend: false,
             }}
-            config={{ responsive: true }}
+            config={{ responsive: true, staticPlot: true }}
             style={{ width: '100%', height: '100%' }}
         />
     );

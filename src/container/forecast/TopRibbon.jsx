@@ -7,7 +7,7 @@ const TopRibbon = ({data}) => {
     return (
         <div className="flex flex-row justify-evenly gap-2 ">
             <Card className="p-4 w-2/6">
-                <DoughnutChart data={data}/>
+                <DoughnutChart data={data.error_percentage}/>
             </Card>
             <Card className="p-4 w-4/6">
                 <SimpleLineChart data={data}/>
