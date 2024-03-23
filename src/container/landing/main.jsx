@@ -4,32 +4,9 @@ import * as Selector from '@selector';
 import TopRibbon from './TopRibbon';
 import BottomRibbon from './BottomRibbon';
 import { Spinner } from 'flowbite-react';
-// import socketIOClient from 'socket.io-client';
 
-// const ENDPOINT = 'http://localhost:5000'; 
 
 const Landing = () => {
-
-    // const [stockData, setStockData] = useState([]);
-
-    // useEffect(() => {
-    //     const socket = socketIOClient(ENDPOINT);
-    
-    //     socket.emit('stock_name', 'AAPL');
-        
-    //     // Listen for real-time data updates from the server
-    //     socket.on('stock_data', (data) => {
-    //       setStockData(data);
-    //     });
-    
-    //     return () => socket.disconnect();
-    //   }, []);
-
-    //   useEffect(() => {
-    //     console.log("This: ",stockData);
-    //   }, [stockData]);
-
-
     const widgy = useSelector(Selector.widgetSelect.widgetData);
     const ticker = useSelector(Selector.widgetSelect.tickerData);
     const charty = useSelector(Selector.graphSelect.graphData);
